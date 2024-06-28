@@ -1,10 +1,11 @@
 'use client'
 
-import { callAllUser, responceType } from "@/api/backendCalls"
+import { callAllUser } from "@/api/backendCalls"
+import { userType } from "@/models/usermodel";
 import { useState } from "react";
 
 export const UserPanal = () => {
-    const [data, setData] = useState<responceType>();
+    const [data, setData] = useState<userType[]>();
 
     const handleOnclick = async () => {
         let res = callAllUser();

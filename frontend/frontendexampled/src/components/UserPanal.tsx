@@ -3,6 +3,7 @@
 import { callAllUser } from "@/api/backendCalls"
 import { userType } from "@/models/usermodel";
 import { useState } from "react";
+import styles from "./UserPanal.module.css";
 
 export const UserPanal = () => {
     const [data, setData] = useState<userType[]>();
@@ -17,21 +18,22 @@ export const UserPanal = () => {
 
     return (
         <div>
-            <div style={{ direction: "ltr" }}>
-                <button style={{ color: 'black' }} onClick={() => handleOnclick()}>Get all users</button>
+            <div className={styles.body}>
+                <button className={styles.button} onClick={() => handleOnclick()}>Get all users</button>
                 <text>List of Users:</text>
             </div>
             {data && <div>
                 {data.map((element, index) => {
                     return (
-                        <div key={element.last_name + index}>
-                            <text>{element.first_name}</text>
+                        <div key={element.last_name + index} className={styles.divMapedNames}>
+                            <text className={styles.textElements}>ID: {element.id} </text>
+                            <text className={styles.textElements}>{element.first_name}</text>
                             <text> </text>
-                            <text>{element.last_name}</text>
+                            <text className={styles.textElements}>{element.last_name}</text>
                         </div>
-                    )
+                    );
                 })}
             </div>}
         </div>
-    )
-}
+    );
+};

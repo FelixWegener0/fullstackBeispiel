@@ -3,7 +3,7 @@
 import { callAllUser } from "@/api/backendCalls"
 import { userType } from "@/models/usermodel";
 import { useState } from "react";
-import styles from "./UserPanal.module.css";
+import styles from "./UserPannel.module.css";
 
 export const UserPanal = () => {
     const [data, setData] = useState<userType[]>();

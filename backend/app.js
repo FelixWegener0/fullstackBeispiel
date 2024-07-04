@@ -17,14 +17,13 @@ app.get('/', (req, res) => {
     res.send('Hello word this is a node server :D');
 });
 
-app.post('/createNewUser', (req, res) => {
-    addNewUser(req.body);
-    res.send('success');
+app.get('/getAllUser', (req, res) => {
+    getAllUser().then(result => res.send(result)).catch(error => res.send('error: ' + JSON.stringify(error)));
 });
 
-app.get('/getAllUser', (req, res) => {
-    getAllUser().then(result => res.send(result)).catch(error => res.send('error' + error));
-});
+app.put('/createNewUser', (req, res) => {
+    addNewUser(req.body).then(result => res.send(result)).catch(error => res.send('error: ' + JSON.stringify(error)));
+})
 
 
 // Error handling

@@ -8,6 +8,6 @@ USE my_database;
 CREATE TABLE IF NOT EXISTS user (
     id int AUTO_INCREMENT PRIMARY KEY,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ,
-    first_name varchar(100),
-    last_name varchar(100)
+    first_name varchar(100) NOT NULL,
+    last_name varchar(100) NOT NULL
 );

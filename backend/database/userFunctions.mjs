@@ -20,9 +20,12 @@ export function closeConnectionDatabase() {
 export function addNewUser(user) {
     let sql = "INSERT INTO user (first_name, last_name) VALUES (?,?)";
 
-    con.query(sql, [user.firstname, user.lastname], function(err, result) {
-        if (err) console.log(err);
-    });
+    return new Promise((resolve, reject) => {
+        con.query(sql, [user.firstname, user.lastname], function(err, result) {
+            if (err) reject(err);
+            resolve('success')
+        });
+    })
 };
 
 export function getAllUser() {

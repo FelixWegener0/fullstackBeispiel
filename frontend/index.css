@@ -27,3 +27,12 @@
     border-radius: 20px;
     margin-left: 20px;
 }
+
+.pauseTimer {
+    font-weight: bold;
+    color: black;
+    background-color: azure;
+    height: 40px;
+    border-radius: 20px;
+    margin-left: 20px;
+}

@@ -30,11 +30,11 @@ const timerIntervall = setInterval(() => {
     localStorage.setItem("timer", timer);
 
     if (timer <= 0) {
-        clearInterval(timerIntervall);
+        timer = 0;
+    } else {
+        timer--;
     }
-
-    timer--;
-}, 998);
+}, 999);
 
 restartTimer.addEventListener("click", () => timer = initTimeHours * 3600);
 addTimeButton.addEventListener("click", () => timer = parseInt(timer) + parseInt(60 * addedminutes));

@@ -1,10 +1,29 @@
 
-.timer {
-    color: white;
-    outline: 5cap;
-    outline-color: black;
+.mainDiv {
+    padding-left: 10%;
+    padding-top: 5%;
 }
 
-.test {
-    color: red;
+.timer {
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 600;
+    color: black;
+    border: 10px;
+}
+
+.addButton {
+    font-weight: bold;
+    color: black;
+    background-color: azure;
+    height: 40px;
+    border-radius: 20px;
+}
+
+.restartButton {
+    font-weight: bold;
+    color: black;
+    background-color: azure;
+    height: 40px;
+    border-radius: 20px;
+    margin-left: 20px;
 }

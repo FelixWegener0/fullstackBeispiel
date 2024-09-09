@@ -1,7 +1,12 @@
 console.log("Start Timer script")
 
-let timer = localStorage.getItem("timer") || 0;
+let initTimeHours = 3;
+let timer = localStorage.getItem("timer") || (initTimeHours * 3600);
+
 let timerComponent = document.getElementById("timerComponent");
+let addTimeButton = document.getElementById("addMinuteButton");
+let restartTimer = document.getElementById("restartTimer");
+let saveCurrentTimer = document.getElementById("saveCurrentTimer");
 
 const formatTimer = (input) => {
     let value;
@@ -15,13 +20,16 @@ const formatTimer = (input) => {
 }
 
 setInterval(() => {
-    let houres = localStorage.getItem("timer") / 3600;
-    let restSeonds = localStorage.getItem("timer") % 3600;
+    let houres = timer / 3600;
+    let restSeonds = timer % 3600;
     let minutes = restSeonds / 60;
     let seconds = restSeonds % 60;
 
-    timerComponent.innerHTML = `online since: ${formatTimer(Math.floor(houres))}:${formatTimer(Math.floor(minutes))}:${formatTimer(seconds)}`;
+    timerComponent.innerHTML = `Timer: ${formatTimer(Math.floor(houres))}:${formatTimer(Math.floor(minutes))}:${formatTimer(seconds)}`;
 
-    timer++;
-    localStorage.setItem("timer", timer);
+    timer--;
 }, 1000);
+
+restartTimer.addEventListener("click", () => timer = initTimeHours * 3600);
+addTimeButton.addEventListener("click", () => timer  = parseInt(timer) + parseInt(600));
+saveCurrentTimer.addEventListener("click", () => localStorage.setItem("timer", timer));

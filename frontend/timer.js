@@ -4,7 +4,7 @@ let initTimeHours = 3;
 let addedminutes = 10;
 
 let timer = localStorage.getItem("timer") || (initTimeHours * 3600);
-let timerPaused = false;
+let timerPaused = localStorage.getItem("paused") || false;
 
 let timerComponent = document.getElementById("timerComponent");
 let addTimeButton = document.getElementById("addMinuteButton");
@@ -25,6 +25,11 @@ const detectPause = () => {
     }
 }
 
+const setPaused = () => {
+    localStorage.setItem("paused", !timerPaused);
+    timerPaused = !timerPaused;
+}
+
 const timerIntervall = setInterval(() => {
     let houres = timer / 3600;
     let restSeonds = timer % 3600;
@@ -41,4 +46,4 @@ const timerIntervall = setInterval(() => {
 
 restartTimer.addEventListener("click", () => timer = initTimeHours * 3600);
 addTimeButton.addEventListener("click", () => timer = parseInt(timer) + parseInt(60 * addedminutes));
-pauseTimer.addEventListener("click", () => { timerPaused = !timerPaused });
+pauseTimer.addEventListener("click", () => setPaused());

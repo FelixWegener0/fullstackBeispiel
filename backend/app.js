@@ -23,6 +23,13 @@ app.get('/getAllUser', (req, res) => {
 
 app.put('/createNewUser', (req, res) => {
     addNewUser(req.body).then(result => res.send(result)).catch(error => res.send('error: ' + JSON.stringify(error)));
+});
+
+app.get('/login', (req, res) => {
+    console.log("into funciton")
+    const headers = req.headers;
+    console.log(headers.username, headers.password)
+    res.send("pass")
 })
 
 

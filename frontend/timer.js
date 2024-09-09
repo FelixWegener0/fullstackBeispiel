@@ -6,7 +6,6 @@ let timer = localStorage.getItem("timer") || (initTimeHours * 3600);
 let timerComponent = document.getElementById("timerComponent");
 let addTimeButton = document.getElementById("addMinuteButton");
 let restartTimer = document.getElementById("restartTimer");
-let saveCurrentTimer = document.getElementById("saveCurrentTimer");
 
 const formatTimer = (input) => {
     let value;
@@ -26,10 +25,10 @@ setInterval(() => {
     let seconds = restSeonds % 60;
 
     timerComponent.innerHTML = `Timer: ${formatTimer(Math.floor(houres))}:${formatTimer(Math.floor(minutes))}:${formatTimer(seconds)}`;
+    localStorage.setItem("timer", timer);
 
     timer--;
 }, 1000);
 
 restartTimer.addEventListener("click", () => timer = initTimeHours * 3600);
 addTimeButton.addEventListener("click", () => timer  = parseInt(timer) + parseInt(600));
-saveCurrentTimer.addEventListener("click", () => localStorage.setItem("timer", timer));

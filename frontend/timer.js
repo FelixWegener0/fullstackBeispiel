@@ -1,15 +1,24 @@
 console.log("Start Timer script")
 
 let initTimeHours = 3;
+let initTimeMinutes = 0;
+let initTimeSeconds = 0;
+
 let addedminutes = 10;
 
 let timer = localStorage.getItem("timer") || (initTimeHours * 3600);
 let timerPaused = localStorage.getItem("paused") || false;
+let deaths = localStorage.getItem("deaths") || 0;
 
 let timerComponent = document.getElementById("timerComponent");
 let addTimeButton = document.getElementById("addMinuteButton");
 let restartTimer = document.getElementById("restartTimer");
 let pauseTimer = document.getElementById("pauseTimer");
+let deathCounter = document.getElementById("deathCounter");
+
+addTimeButton.innerHTML = `Add Death to Timer and counter`;
+deathCounter.innerHTML = `Deaths: ${deaths}`;
+timerPaused ? pauseTimer.innerHTML = "Unpause Timer" : pauseTimer.innerHTML = "Pause Timer"
 
 const formatTimer = (input) => {
     let value;
@@ -25,9 +34,23 @@ const detectPause = () => {
     }
 }
 
-const setPaused = () => {
+const setPausedEvent = () => {
     localStorage.setItem("paused", !timerPaused);
     timerPaused = !timerPaused;
+    timerPaused ? pauseTimer.innerHTML = "Unpause Timer" : pauseTimer.innerHTML = "Pause Timer"
+}
+
+const addTimeEvent = () => {
+    timer = parseInt(timer) + parseInt(60 * addedminutes);
+    deaths++;
+    deathCounter.innerHTML = `Deaths: ${deaths}`;
+    localStorage.setItem("deaths", deaths);
+}
+
+const restartTimerEvent = () => {
+    timer = initTimeHours * 3600 + initTimeMinutes * 60 + initTimeSeconds;
+    deaths = 0;
+    localStorage.setItem("deaths", 0);
 }
 
 const timerIntervall = setInterval(() => {
@@ -44,6 +67,6 @@ const timerIntervall = setInterval(() => {
     }
 }, 999);
 
-restartTimer.addEventListener("click", () => timer = initTimeHours * 3600);
-addTimeButton.addEventListener("click", () => timer = parseInt(timer) + parseInt(60 * addedminutes));
-pauseTimer.addEventListener("click", () => setPaused());
+restartTimer.addEventListener("click", () => restartTimerEvent());
+addTimeButton.addEventListener("click", () => addTimeEvent());
+pauseTimer.addEventListener("click", () => setPausedEvent());

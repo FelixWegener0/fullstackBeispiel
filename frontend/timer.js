@@ -51,6 +51,7 @@ function restartTimerEvent() {
     timer = initTimeHours * 3600 + initTimeMinutes * 60 + initTimeSeconds;
     deaths = 0;
     localStorage.setItem("deaths", 0);
+    deathCounter.innerHTML = `Deaths: ${deaths}`;
 }
 
 const timerIntervall = setInterval(() => {

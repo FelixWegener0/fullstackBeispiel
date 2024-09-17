@@ -18,36 +18,36 @@ let deathCounter = document.getElementById("deathCounter");
 
 addTimeButton.innerHTML = `Add Death to Timer and counter`;
 deathCounter.innerHTML = `Deaths: ${deaths}`;
-timerPaused ? pauseTimer.innerHTML = "Unpause Timer" : pauseTimer.innerHTML = "Pause Timer"
+timerPaused ? pauseTimer.innerHTML = "Unpause Timer" : pauseTimer.innerHTML = "Pause Timer";
 
-const formatTimer = (input) => {
+function formatTimer(input) {
     let value;
     input < 10 ? value = "0" + input : value = input;
     return value;
 }
 
-const detectPause = () => {
+function detectPause () {
     if (timerPaused) {
-        return "PAUSED"
+        return "PAUSED";
     } else {
-        return ""
+        return "";
     }
 }
 
-const setPausedEvent = () => {
+function setPausedEvent() {
     localStorage.setItem("paused", !timerPaused);
     timerPaused = !timerPaused;
-    timerPaused ? pauseTimer.innerHTML = "Unpause Timer" : pauseTimer.innerHTML = "Pause Timer"
+    timerPaused ? pauseTimer.innerHTML = "Unpause Timer" : pauseTimer.innerHTML = "Pause Timer";
 }
 
-const addTimeEvent = () => {
+function addTimeEvent() {
     timer = parseInt(timer) + parseInt(60 * addedminutes);
     deaths++;
     deathCounter.innerHTML = `Deaths: ${deaths}`;
     localStorage.setItem("deaths", deaths);
 }
 
-const restartTimerEvent = () => {
+function restartTimerEvent() {
     timer = initTimeHours * 3600 + initTimeMinutes * 60 + initTimeSeconds;
     deaths = 0;
     localStorage.setItem("deaths", 0);

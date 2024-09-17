@@ -23,6 +23,7 @@
     background-color: azure;
     height: 40px;
     border-radius: 20px;
+    margin-bottom: 10px;
 }
 
 .restartButton {
@@ -32,6 +33,7 @@
     height: 40px;
     border-radius: 20px;
     margin-left: 20px;
+    margin-bottom: 10px;
 }
 
 .pauseTimer {
@@ -41,4 +43,5 @@
     height: 40px;
     border-radius: 20px;
     margin-left: 20px;
+    margin-bottom: 10px;
 }

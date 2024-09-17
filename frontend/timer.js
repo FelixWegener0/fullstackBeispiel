@@ -27,11 +27,7 @@ function formatTimer(input) {
 }
 
 function detectPause () {
-    if (timerPaused) {
-        return "PAUSED";
-    } else {
-        return "";
-    }
+    return timerPaused ? "Paused" : "";
 }
 
 function setPausedEvent() {

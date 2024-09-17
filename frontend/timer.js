@@ -21,9 +21,7 @@ deathCounter.innerHTML = `Deaths: ${deaths}`;
 timerPaused ? pauseTimer.innerHTML = "Unpause Timer" : pauseTimer.innerHTML = "Pause Timer";
 
 function formatTimer(input) {
-    let value;
-    input < 10 ? value = "0" + input : value = input;
-    return value;
+    return input < 10 ? "0" + input : input;
 }
 
 function detectPause () {
